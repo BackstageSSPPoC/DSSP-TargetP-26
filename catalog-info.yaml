@@ -1,0 +1,45 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+
+metadata:
+  name:  DSSP-TargetP-26
+  description: Service  DSSP-TargetP-26
+
+  annotations:
+    github.com/project-slug: BackstageSSPPoC/ DSSP-TargetP-26
+    backstage.io/techdocs-ref: dir:.
+    jenkins.io/job-full-name: Backstage_SSP_PoC/DSSP-TargetP-26/main
+    argocd/app-name:  dssp-targetp-26-dev
+    backstage.io/kubernetes-id:  DSSP-TargetP-26
+    sonarqube.org/project-key:  dssp-targetp-26
+    # prometheus.io/rule: "kube_pod_container_resource_requests{pod=~' dssp-targetp-26.*'}|resource,kube_pod_container_status_running{pod=~' dssp-targetp-26.*'}|container"
+    # prometheus.io/alert: "all"
+    # prometheus.io/labels: "namespace=dev"
+    prometheus.io/rule: "kube_pod_container_resource_requests{pod=~'dssp-targetp-26.*'}|resource,kube_pod_container_status_restarts_total{pod=~'dssp-targetp-26.*'}|container"
+    prometheus.io/alert: "KubePodCrashLooping,KubeDeploymentReplicasMismatch,KubePodNotReady,KubeContainerWaiting,KubeContainerOOMKilled,KubeDeploymentRolloutStuck"
+    prometheus.io/labels: "namespace=dev"
+
+spec:
+  type: service
+  owner: platform-dssp
+  lifecycle: experimental
+
+# apiVersion: backstage.io/v1alpha1
+# kind: Component
+
+# metadata:
+#   name:  DSSP-TargetP-26
+#   description: Service  DSSP-TargetP-26
+
+#   annotations:
+#     github.com/project-slug: BackstageSSPPoC/ DSSP-TargetP-26
+#     backstage.io/techdocs-ref: dir:.
+#     jenkins.io/job-full-name: Backstage_SSP_PoC/DSSP-TargetP-26/main
+#     argocd/app-name:  dssp-targetp-26
+#     backstage.io/kubernetes-id:  DSSP-TargetP-26
+#     sonarqube.org/project-key:  dssp-targetp-26
+
+# spec:
+#   type: service
+#   owner: development
+#   lifecycle: experimental
